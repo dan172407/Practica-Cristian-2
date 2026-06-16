@@ -1,0 +1,252 @@
+/* ==========================================================================
+   Portal del Equipo 5 — tema rojo y negro, estilo "control de versiones"
+   ========================================================================== */
+
+:root {
+  --color-black: #0c0c0d;
+  --color-charcoal: #161618;
+  --color-surface: #1f1f22;
+  --color-red: #b3122e;
+  --color-red-light: #e0203f;
+  --color-red-dim: #7a0e22;
+  --color-white: #f6f5f3;
+  --color-gray-100: #ececea;
+  --color-gray-400: #8a8a8e;
+  --color-gray-600: #5a5a5e;
+
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 6px;
+  --shadow-card: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-white);
+  color: var(--color-charcoal);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: linear-gradient(180deg, var(--color-black) 0%, var(--color-charcoal) 100%);
+  color: var(--color-white);
+  padding: 64px 0 56px;
+  border-bottom: 3px solid var(--color-red);
+  text-align: center;
+}
+
+.git-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-gray-400);
+  margin-bottom: 28px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-gray-600);
+  border-radius: 999px;
+}
+
+.branch {
+  color: var(--color-gray-100);
+}
+
+.branch--feature {
+  color: var(--color-red-light);
+  font-weight: 600;
+}
+
+.git-breadcrumb .arrow {
+  color: var(--color-red);
+}
+
+.site-header h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.site-header .subtitle {
+  font-size: 1.05rem;
+  color: var(--color-gray-100);
+  opacity: 0.85;
+}
+
+/* ---------- Team section ---------- */
+
+.team-section {
+  padding: 72px 0 88px;
+}
+
+.team-section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  text-align: center;
+  color: var(--color-black);
+  margin-bottom: 18px;
+}
+
+.team-section .intro {
+  max-width: 640px;
+  margin: 0 auto 48px;
+  text-align: center;
+  color: var(--color-gray-600);
+  font-size: 1rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.team-card {
+  position: relative;
+  display: flex;
+  background-color: var(--color-white);
+  border: 1px solid #e2e0dd;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(179, 18, 46, 0.18);
+}
+
+.card-marker {
+  width: 5px;
+  background-color: var(--color-red);
+  flex-shrink: 0;
+}
+
+.card-body {
+  padding: 28px 24px;
+  flex: 1;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: 16px;
+}
+
+.card-name .placeholder {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-gray-400);
+}
+
+.role-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-red);
+  background-color: rgba(179, 18, 46, 0.08);
+  border: 1px solid rgba(179, 18, 46, 0.3);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.branch-icon {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+
+/* Estado activo al hacer clic (ver script.js) */
+.team-card.is-active {
+  border-color: var(--color-red);
+}
+
+.team-card.is-active .card-marker {
+  background-color: var(--color-red-light);
+}
+
+/* Animación de entrada controlada por JS */
+.team-card {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.team-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background-color: var(--color-black);
+  color: var(--color-gray-400);
+  text-align: center;
+  padding: 28px 0;
+  font-size: 0.85rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 880px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .site-header {
+    padding: 48px 0 40px;
+  }
+}
+
+/* Respeto por preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .team-card,
+  .team-card.is-visible {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
