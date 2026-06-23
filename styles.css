@@ -246,6 +246,52 @@ body {
   transform: scale(1.05);
 }
 
+/* ---------- Formulario de contacto ---------- */
+
+#form-contacto input,
+#form-contacto textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  color: var(--color-texto);
+  background-color: var(--color-white);
+  border: 2px solid #ccc;
+  border-radius: var(--radio-borde);
+  transition: border-color 0.2s ease;
+}
+
+#form-contacto input:focus,
+#form-contacto textarea:focus {
+  border-color: var(--color-red-light);
+  outline: none;
+}
+
+#form-contacto button[type="submit"] {
+  background-color: var(--color-acento);
+  color: var(--color-white);
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+#form-contacto button[type="submit"]:hover {
+  background-color: var(--color-red-light);
+}
+
+/* Mensajes de respuesta dinámicos */
+.msg-error {
+  color: var(--color-red-light);
+  font-weight: 500;
+}
+
+.msg-exito {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
