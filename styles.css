@@ -14,7 +14,6 @@
   --color-gray-400: #8a8a8e;
   --color-gray-600: #5a5a5e;
 
-  /* Variables requeridas por la rúbrica adaptadas a nuestra paleta */
   --color-primario: var(--color-black);
   --color-acento: var(--color-red);
   --color-fondo: var(--color-white);
@@ -125,7 +124,7 @@ body {
   font-size: 1rem;
 }
 
-.team-grid {
+.team-grid, .team-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -217,4 +216,44 @@ body {
   text-align: center;
   padding: 28px 0;
   font-size: 0.85rem;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Tablet (máx. 768px) */
+@media (max-width: 768px) {
+  .team-grid, .team-cards {
+    grid-template-columns: 1fr 1fr; /* 2 columnas exigidas por rúbrica */
+  }
+  .proyecto-card {
+    flex-direction: column; /* Exigido por rúbrica */
+  }
+}
+
+/* Móvil (máx. 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 20px;
+  }
+  .team-grid, .team-cards {
+    grid-template-columns: 1fr; /* 1 columna exigida por rúbrica */
+  }
+  .site-header h1 {
+    font-size: 1.5rem; /* Exigido por rúbrica */
+  }
+  nav {
+    display: flex;
+    flex-direction: column; /* Exigido por rúbrica */
+    gap: 8px; /* Exigido por rúbrica */
+  }
+}
+
+/* Respeto por preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .team-card,
+  .team-card.is-visible {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
 }
