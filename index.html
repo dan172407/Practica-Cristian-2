@@ -101,6 +101,60 @@
         </div>
       </div>
     </section>
+
+    <section id="portafolio" aria-labelledby="titulo-portafolio">
+  <h2 id="titulo-portafolio">Nuestro Portafolio</h2>
+  <p>Descripción breve del equipo y sus proyectos.</p>
+
+ <article class="proyecto-card">
+    <figure>
+      <img src="img/proyecto1.png" alt="Captura de pantalla de la interfaz de la aplicación móvil PartyLink">
+      <figcaption>Nombre del proyecto 1</figcaption>
+    </figure>
+    <h3>Proyecto 1</h3>
+    <p>Descripción del proyecto 1...</p>
+    <a href="#" class="btn-ver">Ver proyecto</a>
+  </article>
+
+  <article class="proyecto-card">
+    <figure>
+      <img src="img/proyecto2.png" alt="Vista previa del sitio web responsivo para el Congreso de Tecnologías">
+      <figcaption>Nombre del proyecto 2</figcaption>
+    </figure>
+    <h3>Proyecto 2</h3>
+    <p>Descripción del proyecto 2...</p>
+    <a href="#" class="btn-ver">Ver proyecto</a>
+  </article>
+
+  <article class="proyecto-card">
+    <figure>
+      <img src="img/proyecto3.png" alt="Maquetado del sistema de ventas en Figma para DaniblisTec">
+      <figcaption>Nombre del proyecto 3</figcaption>
+    </figure>
+    <h3>Proyecto 3</h3>
+    <p>Descripción del proyecto 3...</p>
+    <a href="#" class="btn-ver">Ver proyecto</a>
+  </article>
+</section>
+
+
+<section id="contacto" aria-labelledby="titulo-contacto">
+  <h2 id="titulo-contacto">Contáctanos</h2>
+  <form id="form-contacto" novalidate>
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+
+    <button type="submit">Enviar</button>
+    <p id="msg-respuesta" aria-live="polite"></p>
+  </form>
+</section>
+
   </main>
 
   <footer class="site-footer">
