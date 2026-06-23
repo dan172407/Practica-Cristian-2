@@ -18,5 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, index * 150);
   });
 
-  console.log('Efectos de animación escalonada cargados.');
+  // 3. Resaltar una tarjeta al hacer clic (Manejo de eventos requerido por rúbrica)
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      cards.forEach((c) => {
+        if (c !== card) c.classList.remove('is-active');
+      });
+      card.classList.toggle('is-active');
+    });
+  });
+
+  console.log('Manejadores de eventos para selección interactiva listos.');
 });
