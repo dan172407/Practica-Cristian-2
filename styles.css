@@ -14,12 +14,16 @@
   --color-gray-400: #8a8a8e;
   --color-gray-600: #5a5a5e;
 
-  --font-display: 'Sora', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --color-primario: var(--color-black);
+  --color-acento: var(--color-red);
+  --color-fondo: var(--color-white);
+  --color-texto: var(--color-charcoal);
+  --fuente-base: 'Inter', sans-serif;
+  --radio-borde: 6px;
+  --sombra: 0 10px 24px rgba(0, 0, 0, 0.25);
 
-  --radius: 6px;
-  --shadow-card: 0 10px 24px rgba(0, 0, 0, 0.25);
+  --font-display: 'Sora', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {
@@ -33,9 +37,9 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-white);
-  color: var(--color-charcoal);
+  font-family: var(--fuente-base);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   line-height: 1.6;
 }
 
@@ -49,10 +53,10 @@ body {
 /* ---------- Header ---------- */
 
 .site-header {
-  background: linear-gradient(180deg, var(--color-black) 0%, var(--color-charcoal) 100%);
+  background: linear-gradient(180deg, var(--color-primario) 0%, var(--color-charcoal) 100%);
   color: var(--color-white);
   padding: 64px 0 56px;
-  border-bottom: 3px solid var(--color-red);
+  border-bottom: 3px solid var(--color-acento);
   text-align: center;
 }
 
@@ -80,7 +84,7 @@ body {
 }
 
 .git-breadcrumb .arrow {
-  color: var(--color-red);
+  color: var(--color-acento);
 }
 
 .site-header h1 {
@@ -108,7 +112,7 @@ body {
   font-weight: 700;
   font-size: clamp(1.5rem, 3vw, 2rem);
   text-align: center;
-  color: var(--color-black);
+  color: var(--color-primario);
   margin-bottom: 18px;
 }
 
@@ -120,7 +124,8 @@ body {
   font-size: 1rem;
 }
 
-.team-grid {
+.team-grid,
+.team-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -129,10 +134,10 @@ body {
 .team-card {
   position: relative;
   display: flex;
-  background-color: var(--color-white);
+  background-color: var(--color-fondo);
   border: 1px solid #e2e0dd;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -144,7 +149,7 @@ body {
 
 .card-marker {
   width: 5px;
-  background-color: var(--color-red);
+  background-color: var(--color-acento);
   flex-shrink: 0;
 }
 
@@ -157,12 +162,12 @@ body {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--color-black);
+  color: var(--color-primario);
   margin-bottom: 16px;
 }
 
 .card-name .placeholder {
-  font-family: var(--font-body);
+  font-family: var(--fuente-base);
   font-weight: 400;
   font-style: italic;
   color: var(--color-gray-400);
@@ -177,7 +182,7 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--color-red);
+  color: var(--color-acento);
   background-color: rgba(179, 18, 46, 0.08);
   border: 1px solid rgba(179, 18, 46, 0.3);
   border-radius: 999px;
@@ -192,16 +197,14 @@ body {
   stroke-width: 1.6;
 }
 
-/* Estado activo al hacer clic (ver script.js) */
 .team-card.is-active {
-  border-color: var(--color-red);
+  border-color: var(--color-acento);
 }
 
 .team-card.is-active .card-marker {
   background-color: var(--color-red-light);
 }
 
-/* Animación de entrada controlada por JS */
 .team-card {
   opacity: 0;
   transform: translateY(14px);
@@ -213,10 +216,86 @@ body {
   transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease;
 }
 
+/* ---------- Portafolio ---------- */
+
+.proyecto-card {
+  background-color: var(--color-fondo);
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proyecto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(179, 18, 46, 0.2);
+}
+
+.btn-ver {
+  display: inline-block;
+  padding: 10px 20px;
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: var(--radio-borde);
+  background-color: var(--color-acento);
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-ver:hover {
+  background-color: var(--color-primario);
+  transform: scale(1.05);
+}
+
+/* ---------- Formulario de contacto ---------- */
+
+#form-contacto input,
+#form-contacto textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  color: var(--color-texto);
+  background-color: var(--color-white);
+  border: 2px solid #ccc;
+  border-radius: var(--radio-borde);
+  transition: border-color 0.2s ease;
+}
+
+#form-contacto input:focus,
+#form-contacto textarea:focus {
+  border-color: var(--color-red-light);
+  outline: none;
+}
+
+#form-contacto button[type="submit"] {
+  background-color: var(--color-acento);
+  color: var(--color-white);
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+#form-contacto button[type="submit"]:hover {
+  background-color: var(--color-red-light);
+}
+
+/* Mensajes de respuesta dinámicos */
+.msg-error {
+  color: var(--color-red-light);
+  font-weight: 500;
+}
+
+.msg-exito {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background-color: var(--color-black);
+  background-color: var(--color-primario);
   color: var(--color-gray-400);
   text-align: center;
   padding: 28px 0;
@@ -225,26 +304,45 @@ body {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 880px) {
-  .team-grid {
-    grid-template-columns: 1fr;
+/* Tablet (máx. 768px) */
+@media (max-width: 768px) {
+  .team-grid,
+  .team-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proyecto-card {
+    flex-direction: column;
   }
 }
 
-@media (max-width: 520px) {
+/* Móvil (máx. 480px) */
+@media (max-width: 480px) {
   .container {
     padding: 0 20px;
   }
 
-  .site-header {
-    padding: 48px 0 40px;
+  .team-grid,
+  .team-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
 /* Respeto por preferencia de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
   .team-card,
-  .team-card.is-visible {
+  .team-card.is-visible,
+  .proyecto-card {
     transition: none;
     opacity: 1;
     transform: none;
