@@ -14,12 +14,17 @@
   --color-gray-400: #8a8a8e;
   --color-gray-600: #5a5a5e;
 
+  /* Variables requeridas por la rúbrica adaptadas a nuestra paleta */
+  --color-primario: var(--color-black);
+  --color-acento: var(--color-red);
+  --color-fondo: var(--color-white);
+  --color-texto: var(--color-charcoal);
+  --fuente-base: 'Inter', sans-serif;
+  --radio-borde: 6px;
+  --sombra: 0 10px 24px rgba(0, 0, 0, 0.25);
+  
   --font-display: 'Sora', sans-serif;
-  --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-
-  --radius: 6px;
-  --shadow-card: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 * {
@@ -33,9 +38,9 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-white);
-  color: var(--color-charcoal);
+  font-family: var(--fuente-base);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   line-height: 1.6;
 }
 
@@ -49,10 +54,10 @@ body {
 /* ---------- Header ---------- */
 
 .site-header {
-  background: linear-gradient(180deg, var(--color-black) 0%, var(--color-charcoal) 100%);
+  background: linear-gradient(180deg, var(--color-primario) 0%, var(--color-charcoal) 100%);
   color: var(--color-white);
   padding: 64px 0 56px;
-  border-bottom: 3px solid var(--color-red);
+  border-bottom: 3px solid var(--color-acento);
   text-align: center;
 }
 
@@ -80,7 +85,7 @@ body {
 }
 
 .git-breadcrumb .arrow {
-  color: var(--color-red);
+  color: var(--color-acento);
 }
 
 .site-header h1 {
@@ -108,7 +113,7 @@ body {
   font-weight: 700;
   font-size: clamp(1.5rem, 3vw, 2rem);
   text-align: center;
-  color: var(--color-black);
+  color: var(--color-primario);
   margin-bottom: 18px;
 }
 
@@ -129,22 +134,16 @@ body {
 .team-card {
   position: relative;
   display: flex;
-  background-color: var(--color-white);
+  background-color: var(--color-fondo);
   border: 1px solid #e2e0dd;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.team-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(179, 18, 46, 0.18);
 }
 
 .card-marker {
   width: 5px;
-  background-color: var(--color-red);
+  background-color: var(--color-acento);
   flex-shrink: 0;
 }
 
@@ -157,12 +156,12 @@ body {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--color-black);
+  color: var(--color-primario);
   margin-bottom: 16px;
 }
 
 .card-name .placeholder {
-  font-family: var(--font-body);
+  font-family: var(--fuente-base);
   font-weight: 400;
   font-style: italic;
   color: var(--color-gray-400);
@@ -177,7 +176,7 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--color-red);
+  color: var(--color-acento);
   background-color: rgba(179, 18, 46, 0.08);
   border: 1px solid rgba(179, 18, 46, 0.3);
   border-radius: 999px;
@@ -192,16 +191,14 @@ body {
   stroke-width: 1.6;
 }
 
-/* Estado activo al hacer clic (ver script.js) */
 .team-card.is-active {
-  border-color: var(--color-red);
+  border-color: var(--color-acento);
 }
 
 .team-card.is-active .card-marker {
   background-color: var(--color-red-light);
 }
 
-/* Animación de entrada controlada por JS */
 .team-card {
   opacity: 0;
   transform: translateY(14px);
@@ -210,43 +207,14 @@ body {
 .team-card.is-visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.25s ease;
 }
 
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background-color: var(--color-black);
+  background-color: var(--color-primario);
   color: var(--color-gray-400);
   text-align: center;
   padding: 28px 0;
   font-size: 0.85rem;
-}
-
-/* ---------- Responsive ---------- */
-
-@media (max-width: 880px) {
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 520px) {
-  .container {
-    padding: 0 20px;
-  }
-
-  .site-header {
-    padding: 48px 0 40px;
-  }
-}
-
-/* Respeto por preferencia de movimiento reducido */
-@media (prefers-reduced-motion: reduce) {
-  .team-card,
-  .team-card.is-visible {
-    transition: none;
-    opacity: 1;
-    transform: none;
-  }
 }
